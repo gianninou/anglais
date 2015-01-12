@@ -5,7 +5,6 @@
        
     </head>
     <body>
-
         <header>
             <h1>TITLE(TODO)</h1>
             <nav class="navbar navbar-default" role="navigation">
@@ -28,7 +27,7 @@
             <?php echo $content; ?>
         </div>
         <footer>
-            <?php echo $footer; ?>
+            
         </footer>
     </body>
 </html>
