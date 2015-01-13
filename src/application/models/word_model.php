@@ -1,11 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class User_model extends CI_model
+class Word_model extends CI_model
 {
 	protected $table = 'user';
 
 	/**
-	 * Add a user to database
+	 * Add a word to database
 	 * 
 	 * @param 	string 		$french   		French traduction of the word
 	 * @param 	string 		$english   		English traduction of the word
@@ -24,9 +24,9 @@ class User_model extends CI_model
 	}
 
 	/**
-	 * Delete a user from database
+	 * Delete a word from database
 	 * 
-	 * @param 	integer 	$id 			Id of the user
+	 * @param 	integer 	$id 			Id of the word
 	 * @return 	bool   						Return value of the request
 	 */
 	public function delete_user($id)
@@ -36,7 +36,7 @@ class User_model extends CI_model
 	}
 
 	/**
-	 *  Update user data
+	 *  Update word data
 	 *  
 	 *  @param 	integer 	$id
 	 *  @param 	string  	$french  		French traduction of the word

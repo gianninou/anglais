@@ -6,12 +6,19 @@ class Welcome extends CI_Controller {
 	public function index(){
 		$data=array();
 
-		$this->load->model('user_model');
 
-		$newUser = $this->user_model->add_user('Grosminet','toto','Damien','Cupif');
+		$user = new User_model();
+		$user->set_last_name("Cupif");
+		$user->set_first_name("Damien");
+		$user->set_login("Mizu");
+		$user->set_password("qwerty");
 
-		$data['content']=$this->load->view('welcome',NULL,true);
-		$data['user']=$newUser;
+		$user->save();
+		
+		var_dump($user);
+		$data2['user']=$user;
+
+		$data['content']=$this->load->view('welcome',$data2,true);
 		$this->load->view('template',$data);
 	}
 }

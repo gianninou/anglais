@@ -1,11 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Group_model extends CI_model
+class List_model extends CI_model
 {
 	protected $table = 'group';
 
 	/**
-	 * Add a user to database
+	 * Add a list to database
 	 * 
 	 * @param 	integer 	$id_admin   	Id of the admin user of the group
 	 * @param 	string 		$name   		Name of the group
@@ -20,7 +20,7 @@ class Group_model extends CI_model
 	}
 
 	/**
-	 * Delete a user from database
+	 * Delete a list from database
 	 * 
 	 * @param 	integer 	$id 			Id of the group
 	 * @return 	bool   						Return value of the request
@@ -32,7 +32,7 @@ class Group_model extends CI_model
 	}
 
 	/**
-	 *  Update user data
+	 *  Update list data
 	 *  
 	 *  @param 	integer 	$id
 	 *  @param 	string  	$id_admin  		Id of the admin user of the group
