@@ -2,6 +2,7 @@
 
 class User_model extends CI_model
 {
+
 	protected $table = 'user';
 
 	private $id;
@@ -14,6 +15,15 @@ class User_model extends CI_model
 	function __construct()
 	{
         parent::__construct();
+        $this->right=0;
+    }
+
+    public function set_id($id){
+    	$this->id = $id;
+    }
+
+    public function get_id(){
+    	return $this->id;
     }
 
     public function set_login($login){
@@ -63,9 +73,9 @@ class User_model extends CI_model
 
     public function save(){
     	if(!isset($this->id)){
-    		$this->add_user();
+    		return $this->add_user();
     	}else{
-    		$this->update_user();
+    		return $this->update_user();
     	}
     }
 
@@ -119,5 +129,30 @@ class User_model extends CI_model
 						->delete($this->table);
 		}
 	}
+
+	public static function login($login, $pass){
+		$CI =& get_instance();
+		$query = $CI->db->query("select * from user
+                                    where login='".$login."'");
+        if($query->num_rows()==1){
+            $row = $query->result();
+            $row = $row[0];
+            if($row->password == sha1($pass)){
+                $user = new User_model();
+                $user->set_id($row->id);
+                $user->set_first_name($row->first_name);
+                $user->set_last_name($row->last_name);
+                $user->set_login($row->login);
+                $user->set_right($row->right);
+                $user->set_password($row->password);
+                return $user;
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }    
+	}
+
 
 }

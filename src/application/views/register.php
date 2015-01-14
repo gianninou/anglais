@@ -1,16 +1,16 @@
 <div id="register_div">
 
 	<h2>Register</h2>
-	<form>
+	<?php echo form_open('welcome/register_form/'); ?>
 
 		<div class="input-group">
-			<span class="input-group-addon">Name</span>
-			<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+			<span class="input-group-addon">First Name</span>
+			<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
 		</div>
 		
 		<div class="input-group">
 			<span class="input-group-addon">Last name</span>
-			<input type="text" class="form-control" name="lname" id="lname" placeholder="Last name">
+			<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name">
 		</div>
 
 		<div class="input-group">
