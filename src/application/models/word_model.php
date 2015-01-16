@@ -2,76 +2,98 @@
 
 class Word_model extends CI_model
 {
-	protected $table = 'user';
+	protected $table = 'word';
 
-	/**
-	 * Add a word to database
-	 * 
-	 * @param 	string 		$french   		French traduction of the word
-	 * @param 	string 		$english   		English traduction of the word
-	 * @param 	string 		$sound 			Sound of english phonetic
-	 * @param 	string 		$phonetic  		English phonetic
-	 * @return 	bool    	          		Return value of the request
-	 */
-	public function add_user($french, $english, $sound, $phonetic)
+	private $french;
+	private $english;
+	private $sound;
+	private $phonetic;
+
+	function __construct()
 	{
-		$this->db->set('french', $french);
-		$this->db->set('english', $english);
-		$this->db->set('sound', $sound);
-		$this->db->set('phonetic', $phonetic);
-		
-		return $this->db->insert($this->table);
+		parent::__construct();
 	}
 
-	/**
-	 * Delete a word from database
-	 * 
-	 * @param 	integer 	$id 			Id of the word
-	 * @return 	bool   						Return value of the request
-	 */
-	public function delete_user($id)
+	public function set_french($french)
 	{
-		return $this->db->where('id', (int) $id)
-						->delete($this->table);
+		$this->french = $french;
 	}
 
-	/**
-	 *  Update word data
-	 *  
-	 *  @param 	integer 	$id
-	 *  @param 	string  	$french  		French traduction of the word
-	 *  @param 	string  	$english 		English traduction of the word
- 	 *  @param 	string  	$sound 			Sound of english phonetic
- 	 *  @param 	string  	$phonetic 		English phonetic
-	 *  @return bool
-	 */
-	public function update_user($id, $french = null, $english = null, $sound = null, $phonetic = null)
+	public function get_french()
 	{
-	    //  There's nothing to modify
-	    if($french == null AND $english == null AND $sound == null AND $phonetic == null)
-	    {
-	        return false;
-	    }
-	    
-	    if($french != null)
-	    {
-	        $this->db->set('french', $french);
-	    }
-	    if($english != null)
-	    {
-	        $this->db->set('english', $english);
-	    }
-	    if($sound != null)
-	    {
-	        $this->db->set('sound', $sound);
-	    }
-	    if($phonetic != null)
-	    {
-	        $this->db->set('phonetic', $phonetic);
-	    }
-
-	    $this->db->where('id', (int) $id);
-	    
-	    return $this->db->update($this->table);
+		return $this->french;
 	}
+
+	public function set_english($english)
+	{
+		$this->english = $english;
+	}
+
+	public function get_english()
+	{
+		return $this->english;
+	}
+
+	public function set_sound($sound)
+	{
+		$this->sound = $sound;
+	}
+
+	public function get_sound()
+	{
+		return $this->sound;
+	}
+
+	public function set_phonetic($phonetic)
+	{
+		$this->phonetic = $phonetic;
+	}
+
+	public function get_phonetic()
+	{
+		return $this->phonetic;
+	}
+
+	public function save()
+	{
+		if (!isset($this->id)) {
+			return $this->add_word();
+		} else {
+			return $this->update_word();
+		}
+	}
+
+	private function add_word()
+	{
+		$this->db->set('french', $this->french);
+		$this->db->set('english', $this->english);
+		$this->db->set('sound', $this->sound);
+		$this->db->set('phonetic', $this->phonetic);
+
+		$res = $this->db->insert($this->table);
+		if ($res) {
+			$this->id = $this->db->insert_id();
+		}
+		return $res;
+	}
+
+	private function update_word()
+	{
+		$this->db->set('french', $this->french);
+		$this->db->set('english', $this->english);
+		$this->db->set('sound', $this->sound);
+		$this->db->set('phonetic', $this->phonetic);
+
+		$this->db->where('id', $this->id);
+		return $this->db->update($this->table);
+	}
+
+	private function delete_word()
+	{
+		if (isset($this->id)) {
+			return $this->db->where('id', (int) $this->id)
+							->delete($this->table);
+		}
+	}
+
 }

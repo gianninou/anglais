@@ -4,61 +4,81 @@ class Group_model extends CI_model
 {
 	protected $table = 'group';
 
-	/**
-	 * Add a group to database
-	 * 
-	 * @param 	integer 	$id_admin   	Id of the admin user of the group
-	 * @param 	string 		$name   		Name of the group
-	 * @return 	bool    	          		Return value of the request
-	 */
-	public function add_group($id_admin, $name)
+	private $id;
+	private $id_admin;
+	private $name;
+
+	function __construct()
 	{
-		$this->db->set('id_admin', $id_admin);
-		$this->db->set('name', $name);
-		
-		return $this->db->insert($this->table);
+		parent::__construct();
 	}
 
-	/**
-	 * Delete a group from database
-	 * 
-	 * @param 	integer 	$id 			Id of the group
-	 * @return 	bool   						Return value of the request
-	 */
-	public function delete_group($id)
+	public function set_id($id)
 	{
-		return $this->db->where('id', (int) $id)
-						->delete($this->table);
+		$this->id = $id;
 	}
 
-	/**
-	 *  Update group data
-	 *  
-	 *  @param 	integer 	$id
-	 *  @param 	string  	$id_admin  		Id of the admin user of the group
-	 *  @param 	string  	$name 			Group name
-	 *  @return bool
-	 */
-	public function update_group($id, $id_admin = null, $name = null)
+	public function get_id()
 	{
-	    //  There's nothing to modify
-	    if($id_admin == null AND $name == null)
-	    {
-	        return false;
-	    }
-	    
-	    if($id_admin != null)
-	    {
-	        $this->db->set('id_admin', $id_admin);
-	    }
-	    if($name != null)
-	    {
-	        $this->db->set('name', $name);
-	    }
+		return $this->id;
+	}
 
+	public function set_id_admin($id_admin)
+	{
+		$this->id_admin = $id_admin;
+	}
 
-	    $this->db->where('id', (int) $id);
-	    
-	    return $this->db->update($this->table);
+	public function get_id_admin()
+	{
+		return $this->id_admin;
+	}
+
+	public function set_name($name)
+	{
+		$this->name = $name;
+	}
+
+	public function get_name()
+	{
+		return $this->name;
+	}
+
+	public function save()
+	{
+		if (!isset($this->id)) {
+			return $this->add_group();
+		} else {
+			return $this->update_group();
+		}
+	}
+
+	private function add_group()
+	{
+		$this->db->set('id_admin', $this->id_admin);
+		$this->db->set('name', $this->name);
+
+		$res = $this->db->insert($this->table);
+		if ($res) {
+			$this->id = $this->db->insert_id();
+		}
+		return $res;
+
+	}
+
+	private function update_group()
+	{
+		$this->db->set('id_admin', $this->id_admin);
+		$this->db->set('name', $this->name);
+
+		$this->db->where('id', $this->id);
+		return $this->db->update($this->table);
+	}
+
+	private function delete_group()
+	{
+		if (isset($this->id)) {
+			return $this->db->where('id', (int) $this->id)
+							->delete($this->table);
+		}
 	}
 }
