@@ -46,9 +46,9 @@ class List_model extends CI_model
 	public function save()
 	{
 		if (!isset($this->id)) {
-			return $this->add_group();
+			return $this->add_list();
 		} else {
-			return $this->update_group();
+			return $this->update_list();
 		}
 	}
 
@@ -80,4 +80,43 @@ class List_model extends CI_model
 							->delete($this->table);
 		}
 	}
+
+
+	public function get_words(){
+		$query = $this->db->query("select * from list_word ,word where list_word.id_word = word.id and id_list='".$this->id."'");
+      
+        $words=array();
+        foreach ($query->result() as $row) {
+            $w = new Word_model();
+            $w->set_id($row->id);
+            $w->set_french($row->french);
+            $w->set_english($row->english);
+            $w->set_phonetic($row->phonetic);
+            $w->set_sound($row->sound);
+            $words[]=$w;
+        }
+        return $words;
+	}
+
+	public function add_word($word){
+		$this->db->set('id_list', $this->id);
+		$this->db->set('id_word', $word->get_id());
+
+		$res = $this->db->insert("list_word");
+		return $res;
+	}
+
+	public static function find_by_id($id){
+		$CI =& get_instance();
+		$CI->db->where('id', $id);
+		$q = $CI->db->get('list');
+		$row = array_shift($q->result_array());
+		$list=new List_model();
+		$list->set_id($row['id']);
+		$list->set_id_admin($row['id_admin']);
+		$list->set_name($row['name']);
+		return $list;
+		
+	}
+
 }

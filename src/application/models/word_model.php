@@ -4,6 +4,7 @@ class Word_model extends CI_model
 {
 	protected $table = 'word';
 
+	private $id;
 	private $french;
 	private $english;
 	private $sound;
@@ -12,6 +13,16 @@ class Word_model extends CI_model
 	function __construct()
 	{
 		parent::__construct();
+	}
+
+	public function set_id($id)
+	{
+		$this->id = $id;
+	}
+
+	public function get_id()
+	{
+		return $this->id;
 	}
 
 	public function set_french($french)
