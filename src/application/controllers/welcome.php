@@ -21,7 +21,13 @@ class Welcome extends CI_Controller {
 			if($this->input->post('login') && $this->input->post('pass')){
 				$user = User_model::login($this->input->post('login'),$this->input->post('pass'));
 				if($user){
-					$sess = array('user'=>$user);
+					$sess = array('user'=> array(
+						'id' => $user->get_id() ,
+						'first_name' => $user->get_first_name(),
+						'last_name' => $user->get_last_name(),
+						'login' => $user->get_login(),
+						'right' => $user->get_right()
+						));
 					$this->session->set_userdata($sess);
 					echo "yoooo";
 				}
@@ -67,7 +73,7 @@ class Welcome extends CI_Controller {
 				echo "field not fill";
 			}
 		}
-		//redirect(base_url().'index.php/welcome');	
+		redirect(base_url().'index.php/welcome');	
 	}
 
 	public function logout(){
