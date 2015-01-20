@@ -119,4 +119,12 @@ class List_model extends CI_model
 		
 	}
 
+	public static function find_word_random($list_id,$user_id){
+		$list = List_model::find_by_id($list_id);
+
+		$words = $list->get_words();
+
+		return $words[rand(0,count($words)-1)];
+	}
+
 }

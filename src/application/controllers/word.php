@@ -55,15 +55,16 @@ class Word extends CI_Controller {
 					}
 					$word->save();
 
+					//add the word to the list
 					$list->add_word($word);
+
 
 					$data2 = array();
 					$data2['success'] = true;
 					$data2['error']="";
 					
 					if($this->input->post('add')){
-						//add an other word
-						//$this->session->keep_flashdata('liste_id_add');	
+						//add an other word	
 						$data2['liste_id']=$liste_id;
 						$data['content']=$this->load->view('add_word',$data2,true);
 						$this->load->view('template',$data);
@@ -74,7 +75,6 @@ class Word extends CI_Controller {
 				}
 			}else{
 				//some field are empty
-				//$this->session->keep_flashdata('liste_id_add');
 				$data['content']=$this->load->view('add_word',array('error' => "" , 'liste_id'=>$liste_id),true);
 				$this->load->view('template',$data);
 			}
@@ -83,6 +83,8 @@ class Word extends CI_Controller {
 			redirect(base_url().'index.php/welcome');
 		}
 	}
+
+	
 }
 
 /* End of file word.php */

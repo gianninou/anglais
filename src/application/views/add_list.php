@@ -7,7 +7,7 @@
 	<?php } ?>
 
 
-	<?php echo form_open_multipart('wlist/add/'); ?>
+	<?php echo form_open('wlist/add/'); ?>
 
 		<div class="input-group">
 			<span class="input-group-addon">Name</span>
