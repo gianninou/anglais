@@ -135,7 +135,6 @@ class Word_model extends CI_model
 		$this->db->from('user_word');
 		$nb = $this->db->count_all_results();
 		if($nb==1){
-			echo "update";
 			$this->db->where('id_word', $this->id);
 			$this->db->where('id_user', $user_id);
 			$this->db->set('nb_all', 'nb_all+1', FALSE);
@@ -146,7 +145,6 @@ class Word_model extends CI_model
 			}
 			$res = $this->db->update('user_word');
 		}else{
-			echo "insert";
 			$this->db->set('id_word', $this->id);
 			$this->db->set('id_user', $user_id);
 			$this->db->set('nb_right', ($answer?1:0));

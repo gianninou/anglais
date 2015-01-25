@@ -11,7 +11,7 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">English Word</span>
-			<input type="text" class="form-control" name="en_word" id="en_word" placeholder="English Word">
+			<input type="text" class="form-control" name="en_word" id="en_word" placeholder="English Word" autofocus>
 		</div>
 		
 		<div class="input-group">

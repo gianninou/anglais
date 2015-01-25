@@ -7,6 +7,9 @@
 		</li>
 	<?php } ?>
 	</ul>
+
 	<a href="<?php echo base_url()."/index.php/word/add/".$list->get_id(); ?>"><button>Add word</button></a>
+	<a href="<?php echo base_url()."/index.php/wlist/answer/".$list->get_id(); ?>"><button>Test it</button></a>
+
 
 </div>

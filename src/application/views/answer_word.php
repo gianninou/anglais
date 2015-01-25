@@ -15,7 +15,7 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">Translation</span>
-			<input type="text" class="form-control" name="translation" id="translation" placeholder="Translation">
+			<input type="text" class="form-control" name="translation" id="translation" placeholder="Translation" autofocus>
 		</div>
 
 		<div class="btn-group">
