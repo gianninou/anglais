@@ -11,7 +11,7 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">Name</span>
-			<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+			<input type="text" class="form-control" name="name" id="name" placeholder="Name" autofocus>
 		</div>
 
 		<div class="btn-group">

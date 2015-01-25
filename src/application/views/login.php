@@ -2,8 +2,8 @@
 	<h2>Login</h2>
 	<?php echo form_open('welcome/login_form/'); ?>
 		<div class="input-group">
-			<span class="input-group-addon">Login</span>
-			<input id="login" type="text" class="form-control" name="login" placeholder="Login" >
+			<span class="input-group-addon">Email</span>
+			<input id="email" type="text" class="form-control" name="email" placeholder="Email" >
 		</div>
 
 		<div class="input-group">

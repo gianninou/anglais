@@ -18,8 +18,8 @@ class Welcome extends CI_Controller {
 
 	public function login_form(){
 		if(!$this->session->userdata('user')){
-			if($this->input->post('login') && $this->input->post('pass')){
-				$user = User_model::login($this->input->post('login'),$this->input->post('pass'));
+			if($this->input->post('email') && $this->input->post('pass')){
+				$user = User_model::login($this->input->post('email'),$this->input->post('pass'));
 				if($user){
 					$sess = array('user'=> array(
 						'id' => $user->get_id() ,
@@ -29,7 +29,6 @@ class Welcome extends CI_Controller {
 						'right' => $user->get_right()
 						));
 					$this->session->set_userdata($sess);
-					echo "yoooo";
 				}
 			}
 		}

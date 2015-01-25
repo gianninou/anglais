@@ -15,13 +15,13 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">Translation</span>
-			<input type="text" class="form-control" name="translation" id="translation" placeholder="Translation" autofocus>
+			<input type="text" class="form-control" name="translation" id="translation" placeholder="Translation" autofocus autocomplete="off">
 		</div>
 
 		<div class="btn-group">
 			<input type="hidden" name="en_to_fr" value="<?php echo $en_to_fr;  ?>"/>
 			<input class="btn btn-default" type="submit" name="validate" value="Validate">
-			<input class="btn btn-default" type="submit" name="cancel" value="Cancel">
+			<input class="btn btn-default" type="submit" name="cancel" value="Finish">
 		</div>
 
 	</form>

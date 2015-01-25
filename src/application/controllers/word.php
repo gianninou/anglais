@@ -51,7 +51,7 @@ class Word extends CI_Controller {
 					$word->set_french($this->input->post('fr_word'));
 					$word->set_phonetic($this->input->post('phonetic'));
 					if($sound){
-						$word->set_sound($sound['full_path']);
+						$word->set_sound($sound['file_name']);
 					}
 					$word->save();
 

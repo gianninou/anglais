@@ -32,7 +32,7 @@ class Wlist extends CI_Controller {
 			
 			if($this->form_validation->run()){
 
-	
+
 				//create list and save on DB
 				$list = new List_model();
 				$list->set_name($this->input->post('name'));
