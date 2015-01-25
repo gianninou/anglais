@@ -125,6 +125,20 @@ class Wlist extends CI_Controller {
 	}
 
 
+	public function myLists(){
+		if($this->session->userdata('user')){
+			$lists = List_model::find_by_user($this->session->userdata('user')['id']);
+			$data2=array();
+			$data2['lists']=$lists;
+			$data['content']=$this->load->view('my_lists',$data2,true);
+			$this->load->view('template',$data);
+
+		}else{
+			//Need to be connected
+			redirect(base_url().'index.php/welcome');
+		}
+	}
+
 }
 
 

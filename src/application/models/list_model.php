@@ -116,8 +116,24 @@ class List_model extends CI_model
 		$list->set_id_admin($row['id_admin']);
 		$list->set_name($row['name']);
 		return $list;
-		
 	}
+
+
+	public static function find_by_user($user_id){
+		$CI =& get_instance();
+		$query = $CI->db->query("select * from list where list.id_admin = ".$user_id);
+      	$lists=array();
+		foreach ($query->result() as $row) {
+			$list=new List_model();
+			$list->set_id($row->id);
+			$list->set_id_admin($row->id_admin);
+			$list->set_name($row->name);
+			$lists[]=$list;
+		}
+		return $lists;
+	}
+
+
 
 	public static function find_word_random($list_id,$user_id){
 		$list = List_model::find_by_id($list_id);
