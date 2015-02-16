@@ -26,6 +26,7 @@
 
 	<?php if($list->get_id_admin() == $this->session->userdata('user')['id']){ ?>
 		<a href="<?php echo base_url()."/index.php/word/add/".$list->get_id(); ?>"><button>Add word</button></a>
+		<a href=""><button>Share (TODO)</button></a>
 	<?php } ?>
 	<a href="<?php echo base_url()."/index.php/wlist/answer/".$list->get_id(); ?>"><button>Test it</button></a>
 

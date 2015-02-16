@@ -81,4 +81,47 @@ class Group_model extends CI_model
 							->delete($this->table);
 		}
 	}
+
+	public function get_users(){
+		$query = $this->db->query("select * from group_user ,user where group_user.id_user = user.id and id_group='".$this->id."'");
+      
+        $users=array();
+        foreach ($query->result() as $row) {
+            $user = new User_model();
+            $user->set_id($row->id);
+            $user->set_login($row->login);
+            $user->set_password($row->password);
+            $user->set_first_name($row->first_name);
+            $user->set_last_name($row->last_name);
+            $user->set_right($row->right);
+            $users[]=$user;
+        }
+        return $users;
+	}
+
+	public static function find_by_id($id){
+		$CI =& get_instance();
+		$CI->db->where('id', $id);
+		$q = $CI->db->get('group');
+		$row = array_shift($q->result_array());
+		$group=new Group_model();
+		$group->set_id($row['id']);
+		$group->set_id_admin($row['id_admin']);
+		$group->set_name($row['name']);
+		return $group;
+	}
+
+	public static function find_by_user($user_id){
+		$CI =& get_instance();
+		$query = $CI->db->query("select * from `group` where group.id_admin = ".$user_id);
+      	$groups=array();
+		foreach ($query->result() as $row) {
+			$group=new Group_model();
+			$group->set_id($row->id);
+			$group->set_id_admin($row->id_admin);
+			$group->set_name($row->name);
+			$groups[]=$group;
+		}
+		return $groups;
+	}
 }

@@ -14,16 +14,19 @@
             <ul class="nav navbar-nav">
                 <?php  if ($this->session->userdata('user') == true) { ?>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lists<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?php echo base_url().'index.php/wlist/myLists'; ?>">My lists</a></li>
                         <li><a href="<?php  echo base_url().'index.php/wlist/add'; ?>">Add</a></li>
                     </ul>
                 </li>
-
-
-
-                <li><a href="#">Groups</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Groups<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?php echo base_url().'index.php/group/myGroups'; ?>">My groups</a></li>
+                        <li><a href="<?php  echo base_url().'index.php/group/add'; ?>">Create a new group</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="<?php  echo base_url().'index.php/welcome/logout'; ?>">Logout</a></li>
                 <?php }else{ ?>

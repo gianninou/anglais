@@ -81,6 +81,11 @@ class List_model extends CI_model
 		}
 	}
 
+	public static function share_list()
+	{
+		
+	}
+
 
 	public function get_words(){
 		$query = $this->db->query("select * from list_word ,word where list_word.id_word = word.id and id_list='".$this->id."'");
