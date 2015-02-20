@@ -24,21 +24,27 @@ class User extends CI_Controller {
 				//check if user cancel the form
 				if($this->input->post('cancel')){
 					//TODO redirect to group
-					redirect(base_url().'index.php/wgroup/view/'.$group_id);
+					redirect(base_url().'index.php/group/view/'.$group_id);
 				}
 
 				$this->form_validation->set_rules('login', '"Login"', 'trim|required|min_length[1]|max_length[255|encode_php_tags|xss_clean');
+
 				if($this->form_validation->run()){
+
 					//check if user entered exists TODO
 					//récupérer user dans $user
+					$user = User_Model::find_by_login($this->input->post('login'));
 
 					//add the user to the group
-					$group->add_user($user);
-
-
 					$data2 = array();
-					$data2['success'] = true;
-					$data2['error']="";
+					if ($user) {
+						$group->add_user($user);
+						$data2['success'] = true;
+						$data2['error']="";
+					} else {
+						$data2['success'] = false;
+						$data2['error'] = "L'utilisateur n'existe pas.";
+					}
 					
 					if($this->input->post('add')){
 						//add an other user
@@ -60,7 +66,6 @@ class User extends CI_Controller {
 			redirect(base_url().'index.php/welcome');
 		}
 	}
-
 	
 }
 

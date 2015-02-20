@@ -7,7 +7,7 @@
 	<?php } ?>
 
 
-	<?php echo form_open('user/add/'); ?>
+	<?php echo form_open('user/add/'.$group_id); ?>
 
 		<div class="input-group">
 			<span class="input-group-addon">Login</span>

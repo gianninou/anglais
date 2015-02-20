@@ -154,5 +154,12 @@ class User_model extends CI_model
         }    
 	}
 
+    public static function find_by_login($login) {
+        $CI =& get_instance();
+        $query = $CI->db->query("select * from user where user.login = ".$login);
+        $user = $query->result();
+        return $user;
+    }
+
 
 }

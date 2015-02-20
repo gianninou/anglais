@@ -9,8 +9,8 @@
 
 		<?php foreach ($words as $key => $word) { ?>
 			<tr>
-				<td><?php echo $word->get_french()  ;?></td>
-				<td><?php echo $word->get_english() ; ?></td>
+				<td><?php echo $word->get_english()  ;?></td>
+				<td><?php echo $word->get_french() ; ?></td>
 				<td><?php echo $word->get_phonetic() ; ?></td>
 				<td>
 					<?php if(!empty($word->get_sound())){ ?>

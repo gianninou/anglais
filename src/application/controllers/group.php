@@ -32,7 +32,7 @@ class Group extends CI_Controller {
 		}
 	}
 
-		public function add(){
+	public function add(){
 		if($this->session->userdata('user')){
 
 			if($this->input->post('cancel')){

@@ -39,6 +39,9 @@ class Wlist extends CI_Controller {
 				$list->set_id_admin($this->session->userdata('user')['id']);
 				$list->save();
 
+				$data2 = array();
+				$data2['success'] = true;
+				$data2['error']="";
 
 				if($this->input->post('add')){
 					//go to the list
