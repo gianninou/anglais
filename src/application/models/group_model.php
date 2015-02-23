@@ -84,10 +84,18 @@ class Group_model extends CI_model
 
 	public function add_user($user)
 	{
-		$this->db->set('id_group', $this->id);
-		$this->db->set('id_user', $user->get_id());
 
-		$res = $this->db->insert("group_user");
+		$query = $this->db->get_where("group_user" , 
+									array(
+										'id_group' => $this->id , 
+										'id_user'=> $user->get_id() ));
+
+		$res=false;
+		if($query->num_rows()==0){
+			$this->db->set('id_group', $this->id);
+			$this->db->set('id_user', $user->get_id());
+			$res = $this->db->insert("group_user");
+		}
 		return $res;
 	}
 
