@@ -16,7 +16,6 @@
 	<?php if($group->get_id_admin() == $this->session->userdata('user')['id']){ ?>
 		<a href="<?php echo base_url()."index.php/user/add/".$group->get_id(); ?>"><button>Add user</button></a>
 	<?php } ?>
-	<a href="<?php echo base_url()."index.php/group/answer/".$group->get_id(); ?>"><button>Test it</button></a>
 
 
 </div>
