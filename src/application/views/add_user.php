@@ -11,6 +11,7 @@
 
 		<div class="input-group">
 			<span class="input-group-addon">Login</span>
+			<?php //TODO add ajax with autocompletion ?>
 			<input type="text" class="form-control" name="login" id="login" placeholder="Login" autofocus>
 		</div>
 

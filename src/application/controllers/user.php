@@ -40,9 +40,9 @@ class User extends CI_Controller {
 					if ($user) {
 						$group->add_user($user);
 						$data2['success'] = true;
-						$data2['error']="";
+						//$data2['error']="";
 					} else {
-						$data2['success'] = false;
+						//$data2['success'] = false;
 						$data2['error'] = "L'utilisateur n'existe pas.";
 					}
 					
