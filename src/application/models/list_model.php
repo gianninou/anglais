@@ -143,9 +143,34 @@ class List_model extends CI_model
 	public static function find_word_random($list_id,$user_id){
 		$list = List_model::find_by_id($list_id);
 
-		$words = $list->get_words();
+		$CI =& get_instance();
 
-		return $words[rand(0,count($words)-1)];
+		$avg = "select AVG(nb_all)
+             	from user_word, list_word
+				where user_word.id_word = list_word.id_word
+				and list_word.id_list=$list_id
+				and user_word.id_user=$user_id";
+		
+		$ens ="	select distinct user_word.id_word 
+				from user_word, list_word
+				where user_word.id_word = list_word.id_word
+				and list_word.id_list=$list_id
+				and user_word.id_user=$user_id
+				and nb_all < ($avg)
+				or nb_right>nb_false";
+
+
+		$query = $CI->db->query($ens);
+		if($query->num_rows()>0){
+			$random = rand(0,$query->num_rows()-1);
+			$id = $query->row($random);
+			$id = $id->id_word;
+			$word = Word_model::find_by_id($id);
+			return $word;
+		}else{
+			return null;
+		}
+		
 	}
 
 }
