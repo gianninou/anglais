@@ -20,6 +20,7 @@
 		                </audio>
 					<?php } ?>
 				</td>
+				<td><a href="<?php echo base_url()."/index.php/wlist/delete_word/".$word->get_id()."/".$list->get_id(); ?>">Delete</a></td>
 			</tr>
 		<?php } ?>
 	</table>

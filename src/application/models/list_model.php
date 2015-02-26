@@ -111,6 +111,14 @@ class List_model extends CI_model
 		return $res;
 	}
 
+	public function delete_word($id_word) {
+		$this->db->delete("list_word", array('id_word' => $id_word));
+		
+		$word = Word_model::find_by_id($id_word);
+		var_dump($word);
+		if ($word) {$word->delete_word();}
+	}
+
 	public static function find_by_id($id){
 		$CI =& get_instance();
 		$CI->db->where('id', $id);

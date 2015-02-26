@@ -99,7 +99,7 @@ class Word_model extends CI_model
 		return $this->db->update($this->table);
 	}
 
-	private function delete_word()
+	public function delete_word()
 	{
 		if (isset($this->id)) {
 			return $this->db->where('id', (int) $this->id)
