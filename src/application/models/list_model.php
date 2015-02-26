@@ -153,20 +153,9 @@ class List_model extends CI_model
 		$CI =& get_instance();
 
 
-		//**************************************************//
-		//TODO USE THIS TO ADD NEW WORD ON TEST
-		$div="	select distinct id
-				from word, user_word, list_word
-				where word.id=list_word.id_word
-				and list_word.id_list=$list_id
-				and id NOT IN 	(
-								select id
-								from word, user_word, list_word
-								where word.id=list_word.id_word
-								and word.id=user_word.id_word
-								and user_word.id_user=$user_id
-								)";
-		//**************************************************//
+		$notrep="	select distinct id_word
+				from list_word
+				where list_word.id_list=$list_id";
 
 
 		$avg = "select AVG(nb_all)
@@ -175,20 +164,25 @@ class List_model extends CI_model
 				and list_word.id_list=$list_id
 				and user_word.id_user=$user_id";
 		
-		$ens ="	select distinct user_word.id_word 
+		$rep ="	select distinct user_word.id_word 
 				from user_word, list_word
 				where user_word.id_word = list_word.id_word
 				and list_word.id_list=$list_id
 				and user_word.id_user=$user_id
-				and nb_all < ($avg)
-				or nb_right<nb_false";
+				and (nb_all <= ($avg)
+				or nb_right < nb_false)";
+
+		$ens = "select distinct id
+				from word
+				where id in ($rep)
+				or id in ($notrep)";
 
 
 		$query = $CI->db->query($ens);
 		if($query->num_rows()>0){
 			$random = rand(0,$query->num_rows()-1);
 			$id = $query->row($random);
-			$id = $id->id_word;
+			$id = $id->id;
 			$word = Word_model::find_by_id($id);
 			return $word;
 		}else{
