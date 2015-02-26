@@ -15,7 +15,6 @@
 		</div>
 
 		<div class="btn-group">
-			<input class="btn btn-default" type="submit" name="add_continue" value="Add and continue">
 			<input class="btn btn-default" type="submit" name="add" value="Add">
 			<input class="btn btn-default" type="submit" name="cancel" value="Cancel">
 		</div>

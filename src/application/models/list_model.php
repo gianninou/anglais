@@ -157,7 +157,7 @@ class List_model extends CI_model
 				and list_word.id_list=$list_id
 				and user_word.id_user=$user_id
 				and nb_all < ($avg)
-				or nb_right>nb_false";
+				or nb_right<nb_false";
 
 
 		$query = $CI->db->query($ens);

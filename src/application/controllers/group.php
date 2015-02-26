@@ -55,9 +55,6 @@ class Group extends CI_Controller {
 				if($this->input->post('add')){
 					//go to the group
 					redirect(base_url().'index.php/group/view/'.$group->get_id());
-				}elseif($this->input->post('add_continue')){
-					//go to add users to the group TODO
-					redirect(base_url().'index.php/welcome');
 				}
 				
 			}else{

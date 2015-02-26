@@ -8,7 +8,7 @@ class User extends CI_Controller {
 		//$group_id = $this->session->flashdata('group_id_add');
 		if($this->session->userdata('user')){
 
-			if($this->input->post('cancel') || $this->input->post('add_continue') || $this->input->post('add')){
+			if($this->input->post('cancel') || $this->input->post('add_finish') || $this->input->post('add')){
 
 				$group = Group_model::find_by_id($group_id);
 				//check if group exist
@@ -51,7 +51,7 @@ class User extends CI_Controller {
 						$data2['group_id']=$group_id;
 						$data['content']=$this->load->view('add_user',$data2,true);
 						$this->load->view('template',$data);
-					}elseif($this->input->post('add_continue')){
+					}elseif($this->input->post('add_finish')){
 						//go to the group
 						redirect(base_url().'index.php/group/view/'.$group->get_id());
 					}
