@@ -68,13 +68,18 @@ class Wlist extends CI_Controller {
 		$this->session->keep_flashdata('word_id');
 		if($this->session->userdata('user')){
 
+			$list = List_model::find_by_id($list_id);
+			if(!$list){
+				redirect(base_url().'index.php/welcome');
+			}
+			$list->try_list($this->session->userdata('user')['id']);
+
 			if($this->input->post('cancel')){
 				//TODO redirect to list
 				redirect(base_url().'index.php/wlist/view/'.$list_id);
 			}	
 
 			if($this->input->post('validate')){
-				
 				
 				
 				$en_to_fr = $this->input->post('en_to_fr');
@@ -111,6 +116,7 @@ class Wlist extends CI_Controller {
 				}
 				
 			}else{
+
 				$word = List_model::find_word_random($list_id, $this->session->userdata('user')['id']);
 				
 				$this->session->set_flashdata('word_id',$word->get_id());
@@ -136,6 +142,20 @@ class Wlist extends CI_Controller {
 			$data2=array();
 			$data2['lists']=$lists;
 			$data['content']=$this->load->view('my_lists',$data2,true);
+			$this->load->view('template',$data);
+
+		}else{
+			//Need to be connected
+			redirect(base_url().'index.php/welcome');
+		}
+	}
+
+	public function triedLists(){
+		if($this->session->userdata('user')){
+			$lists = List_model::get_tried_lists($this->session->userdata('user')['id']);
+			$data2=array();
+			$data2['lists']=$lists;
+			$data['content']=$this->load->view('tried_lists',$data2,true);
 			$this->load->view('template',$data);
 
 		}else{

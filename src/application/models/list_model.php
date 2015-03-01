@@ -205,6 +205,31 @@ class List_model extends CI_model
 		
 	}
 
+	public function try_list($user_id){
+		$this->db->where('id_list',$this->id);
+		$this->db->where('id_user',$user_id);
+		$this->db->from('list_user');
+		$nb = $this->db->count_all_results();
+		if($nb==0){
+			$this->db->set('id_list',$this->id);
+			$this->db->set('id_user',$user_id);
+			$this->db->insert('list_user');
+		}
+	}
+
+	public static function get_tried_lists($user_id){
+		$CI =& get_instance();
+		$query = $CI->db->query("select id_list from  list_user where list_user.id_user = ".$user_id);
+		$lists=array();
+		foreach ($query->result() as $row) {
+			$l = List_model::find_by_id($row->id_list);
+			if($l){
+				$lists[]=$l;
+			}
+		}
+		return $lists;
+	}
+
 
 
 

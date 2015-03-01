@@ -17,6 +17,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lists<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?php echo base_url().'index.php/wlist/myLists'; ?>">My lists</a></li>
+                        <li><a href="<?php echo base_url().'index.php/wlist/triedLists'; ?>">Tried lists</a></li>
                         <li><a href="<?php  echo base_url().'index.php/wlist/add'; ?>">Add</a></li>
                     </ul>
                 </li>
