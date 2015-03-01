@@ -92,12 +92,7 @@ class List_model extends CI_model
       
         $words=array();
         foreach ($query->result() as $row) {
-            $w = new Word_model();
-            $w->set_id($row->id);
-            $w->set_french($row->french);
-            $w->set_english($row->english);
-            $w->set_phonetic($row->phonetic);
-            $w->set_sound($row->sound);
+            $w = Word_model::find_by_id($row->id);
             $words[]=$w;
         }
         return $words;
@@ -107,10 +102,7 @@ class List_model extends CI_model
 		$query = $this->db->query("select * from group_list, group_model where group_list.id_list=".$this->get_id()." and group_list.id_group = group_model.id");
 		$groups=array();
         foreach ($query->result() as $row) {
-            $g = new Group_model();
-            $g->set_id($row->id);
-            $g->set_id_admin($row->id_admin);
-            $g->set_name($row->name);
+            $g = Group_model::find_by_id($row->id);
             $groups[]=$g;
         }
         return $groups;

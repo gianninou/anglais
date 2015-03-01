@@ -64,6 +64,13 @@ class Wlist extends CI_Controller {
 		}
 	}
 
+	public function delete_word($id_word, $id_list) {
+		if ($this->session->userdata('user')) {
+			List_model::delete_word($id_word);
+			redirect(base_url().'index.php/wlist/view/'.$id_list);
+		}
+	}
+
 	public function answer($list_id){
 		$this->session->keep_flashdata('word_id');
 		if($this->session->userdata('user')){
@@ -99,17 +106,21 @@ class Wlist extends CI_Controller {
 						$word->add_bad_answer_user($this->session->userdata('user')['id']);
 						$previous=false;
 					}
-					$word = List_model::find_word_random($list_id, $this->session->userdata('user')['id']);
-					$this->session->set_flashdata('word_id',$word->get_id());
-					$en_to_fr = (rand(0,1)>0.5 ? true : false );
-					$data2=array();
-					$data2['en_to_fr']=$en_to_fr;
-					$data2['word']=$word;
-					$data2['previous']=$previous;
+					$next_word = List_model::find_word_random($list_id, $this->session->userdata('user')['id']);
+					if($next_word){
+						$this->session->set_flashdata('word_id',$next_word->get_id());
+						$en_to_fr = (rand(0,1)>0.5 ? true : false );
+						$data2=array();
+						$data2['en_to_fr']=$en_to_fr;
+						$data2['word']=$next_word;
+						$data2['previous']=$previous;
 
-					$data2['list_id']=$list_id;
-					$data['content']=$this->load->view('answer_word',$data2,true);
-					$this->load->view('template',$data);
+						$data2['list_id']=$list_id;
+						$data['content']=$this->load->view('answer_word',$data2,true);
+						$this->load->view('template',$data);
+					}else{
+						redirect(base_url().'index.php/welcome');
+					}
 				}else{
 					//TODO word not exist
 					redirect(base_url().'index.php/welcome');

@@ -29,7 +29,7 @@
 	<h3>Groups</h3>
 	<ul>
 		<?php foreach($groups as $g){ ?>
-			<li><?php echo $g->get_name(); ?></li>
+			<li><a href="<?php echo base_url()."/index.php/group/view/".$g->get_id(); ?>"><?php echo $g->get_name(); ?></a></li>
 		<?php } ?>
 	</ul>
 
