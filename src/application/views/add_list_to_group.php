@@ -1,6 +1,6 @@
 <div id="add_list_to_group">
-	<h1>Add list X to group</h1>
-	<?php echo form_open('group/addlist/'.$list_id); ?>
+	<h2>Add list <?php echo $list->get_name(); ?> to group</h2>
+	<?php echo form_open('group/addlist/'.$list->get_id()); ?>
 
 		<div class="input-group">
 			<span class="input-group-addon">List</span>

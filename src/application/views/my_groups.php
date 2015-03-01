@@ -1,4 +1,5 @@
 <div id="my_groups">
+	<h2>My groups</h2>
 	<ul>
 		<?php foreach ($groups as $key => $group) { ?>
 			<li>

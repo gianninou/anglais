@@ -1,4 +1,5 @@
 <div id="my_lists">
+	<h2>My lists</h2>
 	<ul>
 		<?php foreach ($lists as $key => $list) { ?>
 			<li>

@@ -8,13 +8,15 @@ class Word extends CI_Controller {
 		//$liste_id = $this->session->flashdata('liste_id_add');
 		if($this->session->userdata('user')){
 
+			$list = List_model::find_by_id($liste_id);
+			//check if list exist
+			if(!$list){
+				redirect(base_url().'index.php/welcome');
+			}
+
 			if($this->input->post('cancel') || $this->input->post('add_continue') || $this->input->post('add')){
 
-				$list = List_model::find_by_id($liste_id);
-				//check if list exist
-				if(!$list){
-					redirect(base_url().'index.php/welcome');
-				}
+				
 
 				//check if user is the admin of the list
 				if($list->get_id_admin() != $this->session->userdata('user')['id']){
@@ -65,7 +67,7 @@ class Word extends CI_Controller {
 					
 					if($this->input->post('add')){
 						//add an other word	
-						$data2['liste_id']=$liste_id;
+						$data2['list']=$list;
 						$data['content']=$this->load->view('add_word',$data2,true);
 						$this->load->view('template',$data);
 					}elseif($this->input->post('add_continue')){
@@ -75,7 +77,7 @@ class Word extends CI_Controller {
 				}
 			}else{
 				//some field are empty
-				$data['content']=$this->load->view('add_word',array('error' => "" , 'liste_id'=>$liste_id),true);
+				$data['content']=$this->load->view('add_word',array('error' => "" , 'list'=>$list),true);
 				$this->load->view('template',$data);
 			}
 		}else{

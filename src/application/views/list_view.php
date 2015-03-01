@@ -1,5 +1,5 @@
 <div id="list_view">
-	<h2><?php echo $list->get_name();?></h2>
+	<h2>List : <?php echo $list->get_name();?></h2>
 	<h3>Words</h3>
 	<table class="table table-hover table-bordered">
 

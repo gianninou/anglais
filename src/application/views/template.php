@@ -24,6 +24,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Groups<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?php echo base_url().'index.php/group/myGroups'; ?>">My groups</a></li>
+                        <li><a href="<?php echo base_url().'index.php/group/myGroupsShared'; ?>">Groups share with me</a></li>
                         <li><a href="<?php  echo base_url().'index.php/group/add'; ?>">Create a new group</a></li>
                     </ul>
                 </li>

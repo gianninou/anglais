@@ -116,6 +116,20 @@ class Group_model extends CI_model
         return $users;
 	}
 
+	public function get_lists(){
+		$query = $this->db->query("select * from group_list ,list where group_list.id_list = list.id and group_list.id_group='".$this->id."'");
+      
+        $lists=array();
+        foreach ($query->result() as $row) {
+            $list = new List_model();
+            $list->set_id($row->id);
+            $list->set_id_admin($row->id_admin);
+            $list->set_name($row->name);
+            $lists[]=$list;
+        }
+        return $lists;
+	}
+
 	public static function find_by_id($id){
 		$CI =& get_instance();
 		$CI->db->where('id', $id);
@@ -131,6 +145,20 @@ class Group_model extends CI_model
 	public static function find_by_user($user_id){
 		$CI =& get_instance();
 		$query = $CI->db->query("select * from `group_model` where group_model.id_admin = ".$user_id);
+      	$groups=array();
+		foreach ($query->result() as $row) {
+			$group=new Group_model();
+			$group->set_id($row->id);
+			$group->set_id_admin($row->id_admin);
+			$group->set_name($row->name);
+			$groups[]=$group;
+		}
+		return $groups;
+	}
+
+	public static function find_by_user_shared($user_id){
+		$CI =& get_instance();
+		$query = $CI->db->query("select * from group_user ,group_model  where group_user.id_group = group_model.id and group_user.id_user=".$user_id);
       	$groups=array();
 		foreach ($query->result() as $row) {
 			$group=new Group_model();

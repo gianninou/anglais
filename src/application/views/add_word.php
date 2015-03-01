@@ -1,13 +1,13 @@
 <div id="add_word">
 
-	<h2>Add a word</h2>
+	<h2>Add a word to list "<?php echo $list->get_name(); ?>"</h2>
 	<?php if(isset($error)) echo $error; ?>
 	<?php if(isset($success)){?>
 		<span>Word added</span>
 	<?php } ?>
 
 
-	<?php echo form_open_multipart('word/add/'.$liste_id); ?>
+	<?php echo form_open_multipart('word/add/'.$list->get_id()); ?>
 
 		<div class="input-group">
 			<span class="input-group-addon">English Word</span>
