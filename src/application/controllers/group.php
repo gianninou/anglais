@@ -37,7 +37,7 @@ class Group extends CI_Controller {
 
 			if($this->input->post('cancel')){
 				//TODO redirect to my groups
-				redirect(base_url().'index.php/welcome');
+				redirect(base_url().'index.php/myGroups');
 			}
 			
 			$this->form_validation->set_rules('name', '"Group name"', 'trim|required|min_length[1]|max_length[255|encode_php_tags|xss_clean');
@@ -62,6 +62,40 @@ class Group extends CI_Controller {
 				$data['content']=$this->load->view('add_group',array('error' => ""),true);
 				$this->load->view('template',$data);
 			}
+		}else{
+			//Need to be connected
+			redirect(base_url().'index.php/welcome');
+		}
+	}
+
+	public function addlist($list_id){
+		if($this->session->userdata('user')){
+
+			if($this->input->post('cancel')){
+				//TODO redirect to my groups
+				redirect(base_url().'index.php/myGroups');
+			}
+
+			$this->form_validation->set_rules('group', '"Group Name"', 'trim|required|encode_php_tags|xss_clean');
+			
+			if($this->form_validation->run()){
+				//form valide
+				$group = Group_model::find_by_id($this->input->post('group'));
+				if($group){
+					$res=$group->addlist($list_id);
+					//TODO test res
+				}
+				redirect(base_url().'index.php/wlist/view/'.$list_id);
+			}else{
+				$mygroups = Group_model::find_by_user($this->session->userdata('user')['id']);
+				if($mygroups){
+					$data['content']=$this->load->view('add_list_to_group',array('groups' => $mygroups, 'list_id'=>$list_id),true);
+					$this->load->view('template',$data);
+				}else{
+					redirect(base_url().'index.php/welcome');
+				}
+			}
+
 		}else{
 			//Need to be connected
 			redirect(base_url().'index.php/welcome');

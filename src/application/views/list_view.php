@@ -1,5 +1,6 @@
 <div id="list_view">
 	<h2><?php echo $list->get_name();?></h2>
+	<h3>Words</h3>
 	<table class="table table-hover table-bordered">
 
 		<th>English</th>
@@ -25,8 +26,19 @@
 		<?php } ?>
 	</table>
 
+	<h3>Groups</h3>
+	<ul>
+		<?php foreach($groups as $g){ ?>
+			<li><?php echo $g->get_name(); ?></li>
+		<?php } ?>
+	</ul>
+
+
+
+
 	<?php if($list->get_id_admin() == $this->session->userdata('user')['id']){ ?>
 		<a href="<?php echo base_url()."/index.php/word/add/".$list->get_id(); ?>"><button>Add word</button></a>
+		<a href="<?php echo base_url()."/index.php/group/addlist/".$list->get_id(); ?>"><button>Add to group</button></a>
 		<a href=""><button>Share (TODO)</button></a>
 	<?php } ?>
 	<a href="<?php echo base_url()."/index.php/wlist/answer/".$list->get_id(); ?>"><button>Test it</button></a>

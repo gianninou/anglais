@@ -2,7 +2,7 @@
 
 class Group_model extends CI_model
 {
-	protected $table = 'group';
+	protected $table = 'group_model';
 
 	private $id;
 	private $id_admin;
@@ -119,7 +119,7 @@ class Group_model extends CI_model
 	public static function find_by_id($id){
 		$CI =& get_instance();
 		$CI->db->where('id', $id);
-		$q = $CI->db->get('group');
+		$q = $CI->db->get('group_model');
 		$row = array_shift($q->result_array());
 		$group=new Group_model();
 		$group->set_id($row['id']);
@@ -130,7 +130,7 @@ class Group_model extends CI_model
 
 	public static function find_by_user($user_id){
 		$CI =& get_instance();
-		$query = $CI->db->query("select * from `group` where group.id_admin = ".$user_id);
+		$query = $CI->db->query("select * from `group_model` where group_model.id_admin = ".$user_id);
       	$groups=array();
 		foreach ($query->result() as $row) {
 			$group=new Group_model();
@@ -140,5 +140,24 @@ class Group_model extends CI_model
 			$groups[]=$group;
 		}
 		return $groups;
+	}
+
+	public function addlist($id_list){
+		$res=false;
+		$list = List_model::find_by_id($id_list);
+		if($list){
+			$query = $this->db->get_where("group_list" , 
+									array(
+										'id_group' => $this->get_id() , 
+										'id_list'=> $id_list ));
+
+			if($query->num_rows()==0){
+				$this->db->set('id_group', $this->get_id());
+				$this->db->set('id_list', $id_list);
+				$res = $this->db->insert("group_list");
+			}
+		}
+		return $res;
+
 	}
 }

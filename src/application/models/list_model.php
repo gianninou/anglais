@@ -103,6 +103,20 @@ class List_model extends CI_model
         return $words;
 	}
 
+	public function  get_groups(){
+		$query = $this->db->query("select * from group_list, group_model where group_list.id_list=".$this->get_id()." and group_list.id_group = group_model.id");
+		$groups=array();
+        foreach ($query->result() as $row) {
+            $g = new Group_model();
+            $g->set_id($row->id);
+            $g->set_id_admin($row->id_admin);
+            $g->set_name($row->name);
+            $groups[]=$g;
+        }
+        return $groups;
+
+	}
+
 	public function add_word($word){
 		$this->db->set('id_list', $this->id);
 		$this->db->set('id_word', $word->get_id());
@@ -190,5 +204,8 @@ class List_model extends CI_model
 		}
 		
 	}
+
+
+
 
 }

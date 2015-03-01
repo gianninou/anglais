@@ -7,9 +7,11 @@ class Wlist extends CI_Controller {
 		$list = List_model::find_by_id($id);
 		if($list){
 			$words = $list->get_words();
+			$groups = $list->get_groups();
 
 			$data2['list']=$list;
 			$data2['words']=$words;
+			$data2['groups']=$groups;
 
 			$data['content']=$this->load->view('list_view',$data2,true);
 			$this->load->view('template',$data);
@@ -62,13 +64,6 @@ class Wlist extends CI_Controller {
 		}
 	}
 
-	public function delete_word($id_word, $id_list) {
-		if ($this->session->userdata('user')) {
-			List_model::delete_word($id_word);
-			redirect(base_url().'index.php/wlist/view/'.$id_list);
-		}
-	}
-
 	public function answer($list_id){
 		$this->session->keep_flashdata('word_id');
 		if($this->session->userdata('user')){
@@ -117,23 +112,16 @@ class Wlist extends CI_Controller {
 				
 			}else{
 				$word = List_model::find_word_random($list_id, $this->session->userdata('user')['id']);
-				var_dump($list_id);
-				var_dump($this->session->userdata('user')['id']);
-				break;
 				
-				if ($word!=null) {
-					$this->session->set_flashdata('word_id',$word->get_id());
-					$en_to_fr = (rand(0,1)>0.5 ? true : false );
-					$data2=array();
-					$data2['en_to_fr']=$en_to_fr;
-					$data2['word']=$word;
-					$data2['list_id']=$list_id;
+				$this->session->set_flashdata('word_id',$word->get_id());
+				$en_to_fr = (rand(0,1)>0.5 ? true : false );
+				$data2=array();
+				$data2['en_to_fr']=$en_to_fr;
+				$data2['word']=$word;
+				$data2['list_id']=$list_id;
 
-					$data['content']=$this->load->view('answer_word',$data2,true);
-					$this->load->view('template',$data);
-				} else {
-					redirect(base_url().'index.php/welcome');
-				}
+				$data['content']=$this->load->view('answer_word',$data2,true);
+				$this->load->view('template',$data);
 			}
 		}else{
 			//Need to be connected
