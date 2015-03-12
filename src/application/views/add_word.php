@@ -1,10 +1,16 @@
 <div id="add_word">
 
 	<h2>Add a word to list "<?php echo $list->get_name(); ?>"</h2>
-	<?php if(isset($error)) echo $error; ?>
-	<?php if(isset($success)){?>
-		<span>Word added</span>
+	
+
+	<?php if(isset($error)){ ?>
+		<h4><span class="label label-danger"><?php echo $error; ?></span></h4>
 	<?php } ?>
+
+	<?php if(isset($success)){ ?>
+		<h4><span class="label label-success">Word added</span></h4>
+	<?php } ?>
+
 
 
 	<?php echo form_open_multipart('word/add/'.$list->get_id()); ?>

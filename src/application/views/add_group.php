@@ -1,9 +1,13 @@
 <div id="add_group">
 
 	<h2>Create a group</h2>
-	<?php if(isset($error)) echo $error; ?>
-	<?php if(isset($success)){?>
-		<span>Group added</span>
+
+	<?php if(isset($error)){ ?>
+		<h4><span class="label label-danger"><?php echo $error; ?></span></h4>
+	<?php } ?>
+
+	<?php if(isset($success)){ ?>
+		<h4><span class="label label-success">Group added</span></h4>
 	<?php } ?>
 
 

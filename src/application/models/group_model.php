@@ -173,4 +173,15 @@ class Group_model extends CI_model
 		return $res;
 
 	}
+
+	public static function delete_user($id_group, $id_user) {
+		$CI =& get_instance();
+		$CI->db->delete("group_user", array('id_user' => $id_user , 'id_group' => $id_group));
+	}
+
+	public static function delete_list($id_group, $id_list) {
+		$CI =& get_instance();
+		$CI->db->delete("group_list", array('id_list' => $id_list , 'id_group' => $id_group));
+	}
+
 }

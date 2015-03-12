@@ -9,33 +9,39 @@
 </head>
 <body>
     <header>
-        <h1>TITLE(TODO)</h1>
+        <h1 id="banniere"><a href="<?php echo base_url().'index.php'; ?>"><img src="<?php echo base_url() . 'assets/img/banniere.jpg' ; ?>"/></a></h1>
+        
         <nav class="navbar navbar-default" role="navigation">
-            <ul class="nav navbar-nav">
-                <?php  if ($this->session->userdata('user') == true) { ?>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lists<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="<?php echo base_url().'index.php/wlist/myLists'; ?>">My lists</a></li>
-                        <li><a href="<?php echo base_url().'index.php/wlist/triedLists'; ?>">Tried lists</a></li>
-                        <li><a href="<?php  echo base_url().'index.php/wlist/add'; ?>">Add</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Groups<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="<?php echo base_url().'index.php/group/myGroups'; ?>">My groups</a></li>
-                        <li><a href="<?php echo base_url().'index.php/group/myGroupsShared'; ?>">Groups share with me</a></li>
-                        <li><a href="<?php  echo base_url().'index.php/group/add'; ?>">Create a new group</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="<?php  echo base_url().'index.php/welcome/logout'; ?>">Logout</a></li>
-                <?php }else{ ?>
-                <li><a href="<?php  echo base_url().'index.php/welcome/login'; ?>">Login</a></li>
-                <li><a href="<?php  echo base_url().'index.php/welcome/register'; ?>">Register</a></li>
-                <?php } ?>
-            </ul>
+            
+            <?php  if ($this->session->userdata('user') == true) { ?>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Lists<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="<?php echo base_url().'index.php/wlist/myLists'; ?>">My lists</a></li>
+                            <li><a href="<?php echo base_url().'index.php/wlist/triedLists'; ?>">Tried lists</a></li>
+                            <li><a href="<?php  echo base_url().'index.php/wlist/add'; ?>">Add</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Groups<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="<?php echo base_url().'index.php/group/myGroups'; ?>">My groups</a></li>
+                            <li><a href="<?php echo base_url().'index.php/group/myGroupsShared'; ?>">Groups share with me</a></li>
+                            <li><a href="<?php  echo base_url().'index.php/group/add'; ?>">Create a new group</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-right"><a href="<?php  echo base_url().'index.php/welcome/logout'; ?>">Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                </ul>
+            <?php }else{ ?>
+                <ul class="nav navbar-nav">
+                    <li><a href="<?php  echo base_url().'index.php/welcome/login'; ?>">Login</a></li>
+                    <li><a href="<?php  echo base_url().'index.php/welcome/register'; ?>">Register</a></li>
+                </ul>
+            <?php } ?>
+            
         </nav>
     </header>
 
@@ -43,6 +49,11 @@
         <?php echo $content; ?>
     </div>
     <footer>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <p class="navbar-text">Developed by Damien CUPIF and Valentin GIANNINI</p>
+            </div>
+        </nav>
     </footer>
 </body>
 </html>

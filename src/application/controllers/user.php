@@ -43,7 +43,7 @@ class User extends CI_Controller {
 						//$data2['error']="";
 					} else {
 						//$data2['success'] = false;
-						$data2['error'] = "L'utilisateur n'existe pas.";
+						$data2['error'] = "User not exists";
 					}
 					
 					if($this->input->post('add')){

@@ -12,7 +12,8 @@ class Welcome extends CI_Controller {
 	}
 
 	public function login(){
-		$data['content']=$this->load->view('login',NULL,true);
+		$data2['error']=$this->session->flashdata('error_login');
+		$data['content']=$this->load->view('login',$data2,true);
 		$this->load->view('template',$data);
 	}
 
@@ -29,10 +30,14 @@ class Welcome extends CI_Controller {
 						'right' => $user->get_right()
 						));
 					$this->session->set_userdata($sess);
+					redirect(base_url().'index.php/');	
+				}else{
+					$this->session->set_flashdata('error_login', 'Bad login/password');
 				}
 			}
 		}
-		redirect(base_url().'index.php/welcome');	
+		
+		redirect(base_url().'index.php/welcome/login');	
 	}
 
 	public function register(){

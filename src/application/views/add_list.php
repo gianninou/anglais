@@ -1,9 +1,13 @@
 <div id="add_list">
 
 	<h2>Add a list</h2>
-	<?php if(isset($error)) echo $error; ?>
-	<?php if(isset($success)){?>
-		<span>List added</span>
+
+	<?php if(isset($error)){ ?>
+		<h4><span class="label label-danger"><?php echo $error; ?></span></h4>
+	<?php } ?>
+
+	<?php if(isset($success)){ ?>
+		<h4><span class="label label-success">List added</span></h4>
 	<?php } ?>
 
 

@@ -1,5 +1,12 @@
 <div id="login_div">
 	<h2>Login</h2>
+	
+
+	<?php if(isset($error)){ ?>
+		<h4><span class="label label-danger"><?php echo $error; ?></span></h4>
+	<?php } ?>
+
+
 	<?php echo form_open('welcome/login_form/'); ?>
 		<div class="input-group">
 			<span class="input-group-addon">Email</span>

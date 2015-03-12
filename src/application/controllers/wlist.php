@@ -165,6 +165,7 @@ class Wlist extends CI_Controller {
 		if($this->session->userdata('user')){
 			$lists = List_model::get_tried_lists($this->session->userdata('user')['id']);
 			$data2=array();
+			$data2['id_user']=$this->session->userdata('user')['id'];
 			$data2['lists']=$lists;
 			$data['content']=$this->load->view('tried_lists',$data2,true);
 			$this->load->view('template',$data);

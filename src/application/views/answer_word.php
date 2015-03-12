@@ -3,7 +3,11 @@
 
 	<div>
 		<?php if(isset($previous)){ ?>
-		Previous word : <?php echo ($previous?"good":"bad"); ?> answer
+			<?php if($previous){ ?>
+				<h4><span class="label label-success">Previous word : good answer</span></h4>
+			<?php }else{ ?>
+				<h4><span class="label label-danger">Previous word : bad answer</span></h4>
+			<?php } ?>			
 		<?php } ?>
 	</div>
 

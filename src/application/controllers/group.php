@@ -129,4 +129,21 @@ class Group extends CI_Controller {
 			redirect(base_url().'index.php/welcome');
 		}
 	}
+
+
+	public function delete_user($id_user, $id_group) {
+		if ($this->session->userdata('user')) {
+			Group_model::delete_user($id_group,$id_user);
+			redirect(base_url().'index.php/group/view/'.$id_group);
+		}
+	}
+
+
+	public function delete_list($id_list, $id_group) {
+		if ($this->session->userdata('user')) {
+			Group_model::delete_list($id_group,$id_list);
+			redirect(base_url().'index.php/group/view/'.$id_group);
+		}
+	}
+
 }
