@@ -4,27 +4,27 @@
 	<?php echo form_open('welcome/register_form/'); ?>
 
 		<div class="input-group">
-			<span class="input-group-addon">First Name</span>
+			<span class="input-group-addon" style="width:150px" >First Name</span>
 			<input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
 		</div>
 		
 		<div class="input-group">
-			<span class="input-group-addon">Last name</span>
+			<span class="input-group-addon" style="width:150px" >Last name</span>
 			<input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last name">
 		</div>
 
 		<div class="input-group">
-			<span class="input-group-addon">Email</span>
+			<span class="input-group-addon" style="width:150px" >Email</span>
 			<input type="mail" class="form-control" name="email" id="email" placeholder="Email">
 		</div>
 
 		<div class="input-group">
-			<span class="input-group-addon">Password</span>
+			<span class="input-group-addon" style="width:150px" >Password</span>
 			<input type="password" name="pass" id="pass" class="form-control" placeholder="Password">
 		</div>
 
 		<div class="input-group">
-			<span class="input-group-addon">Confirm password</span>
+			<span class="input-group-addon" style="width:150px" >Confirm password</span>
 			<input type="password" name="pass2" id="pass2" class="form-control" placeholder="Confirm Password">
 		</div>
 

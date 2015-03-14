@@ -33,6 +33,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-text">Hi <?php echo $this->session->userdata('user')['first_name']." ".$this->session->userdata('user')['last_name'] ?></li>
                     <li class="navbar-right"><a href="<?php  echo base_url().'index.php/welcome/logout'; ?>">Logout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
                 </ul>
             <?php }else{ ?>

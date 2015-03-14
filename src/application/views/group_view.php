@@ -19,7 +19,10 @@
 		</table>
 	<?php } ?>
 	<?php if($group->get_id_admin() == $this->session->userdata('user')['id']){ ?>
-		<a href="<?php echo base_url()."index.php/user/add/".$group->get_id(); ?>"><button>Add user</button></a>
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		<a href="<?php echo base_url()."index.php/user/add/".$group->get_id(); ?>">
+			<button type="button" class="btn btn-success">Add user</button>
+		</a>
 	<?php } ?>
 
 	<h3><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>Lists on this group</h3>

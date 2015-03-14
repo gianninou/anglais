@@ -8,7 +8,7 @@ class Wlist extends CI_Controller {
 		if($list){
 			$words = $list->get_words();
 			$groups = $list->get_groups();
-
+			$data2['id_user']=$this->session->userdata('user')['id'];
 			$data2['list']=$list;
 			$data2['words']=$words;
 			$data2['groups']=$groups;

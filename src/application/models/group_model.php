@@ -110,6 +110,12 @@ class Group_model extends CI_model
         return $users;
 	}
 
+	public function get_nb_users(){
+		$query = $this->db->query("select COUNT(*) as count from group_user ,user where group_user.id_user = user.id and id_group='".$this->id."'");
+      	$row = $query->result();
+        return $row[0]->count;
+	}
+
 	public function get_lists(){
 		$query = $this->db->query("select * from group_list ,list where group_list.id_list = list.id and group_list.id_group='".$this->id."'");
       
@@ -119,6 +125,12 @@ class Group_model extends CI_model
             $lists[]=$list;
         }
         return $lists;
+	}
+
+	public function get_nb_lists(){
+		$query = $this->db->query("select COUNT(*) as count from group_list ,list where group_list.id_list = list.id and group_list.id_group='".$this->id."'");
+      	$row = $query->result();
+        return $row[0]->count;
 	}
 
 	public static function find_by_id($id){

@@ -98,6 +98,13 @@ class List_model extends CI_model
         return $words;
 	}
 
+	public function get_nb_words(){
+		$query = $this->db->query("select COUNT(*) as count from list_word ,word where list_word.id_word = word.id and id_list='".$this->id."'");
+      
+      	$row = $query->result()[0];
+        return $row->count;
+	}
+
 	public function  get_groups(){
 		$query = $this->db->query("select * from group_list, group_model where group_list.id_list=".$this->get_id()." and group_list.id_group = group_model.id");
 		$groups=array();

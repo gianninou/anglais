@@ -9,12 +9,12 @@
 
 	<?php echo form_open('welcome/login_form/'); ?>
 		<div class="input-group">
-			<span class="input-group-addon">Email</span>
+			<span class="input-group-addon" style="width:150px" >Email</span>
 			<input id="email" type="text" class="form-control" name="email" placeholder="Email" >
 		</div>
 
 		<div class="input-group">
-            <span class="input-group-addon">Password</span>
+            <span class="input-group-addon" style="width:150px" >Password</span>
             <input type="password" name="pass" id="pass" class="form-control" placeholder="Password">
         </div>
         <div class="btn-group">
