@@ -231,25 +231,34 @@ class List_model extends CI_model
 
 	public function get_stat($user_id){
 		$query = $this->db->query("
-			select nb_right, nb_false, nb_all 
+			select  nb_right, nb_false, nb_all 
 			from list_word, user_word 
 			where $this->id = list_word.id_list
 			and list_word.id_word = user_word.id_word
 			and user_word.id_user = $user_id 
 			");
       	$lists=array();
-		$nbWord=0;
-		$ok=0;
+		$nbWord=0.0;
+		$ok=0.0;
+		$ko=0;
 		if($query->num_rows()==0){
 			return 0;
 		}
 		foreach ($query->result() as $row) {
-			$nbWord=$nbWord+1;
-			if($row->nb_right >= $row->nb_false*2  &&  $row->nb_all>5 ){
-				$ok++;
+			$nbWord=$nbWord+1.0;
+			if($row->nb_right >= $row->nb_false*1.5  &&  $row->nb_all>4 ){
+				$ok=$ok+1.0;
+			}elseif($row->nb_right >= $row->nb_false  &&  $row->nb_all>4){
+				$ok=$ok+0.5;
 			}
 		}
-		return floor(($ok/$nbWord)*100);
+		$res = floor(($ok/$nbWord)*100);
+		/*if($res>100){
+			$res=100;
+		}elseif($res<0){
+			$res=0;
+		}*/
+		return $res;
 	}
 
 

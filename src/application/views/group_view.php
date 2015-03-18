@@ -1,8 +1,9 @@
 <div id="group_view">
 	<h2><span class="label label-info"><?php echo $group->get_name();?></span></h2>
 
-	<h3><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>People on this group</h3>
+	
 	<?php if(isset($users)){ ?>
+		<h3><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>People on this group</h3>
 		<table class="table table-hover table-bordered">
 
 			<th>First name</th>

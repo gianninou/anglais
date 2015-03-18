@@ -16,22 +16,22 @@
 	<?php echo form_open_multipart('word/add/'.$list->get_id()); ?>
 
 		<div class="input-group">
-			<span class="input-group-addon">English Word</span>
+			<span class="input-group-addon" style="width:150px">English Word</span>
 			<input type="text" class="form-control" name="en_word" id="en_word" placeholder="English Word" autofocus>
 		</div>
 		
 		<div class="input-group">
-			<span class="input-group-addon">French Word</span>
+			<span class="input-group-addon" style="width:150px">French Word</span>
 			<input type="text" class="form-control" name="fr_word" id="fr_word" placeholder="French Word">
 		</div>
 
 		<div class="input-group">
-			<span class="input-group-addon">Phonetic</span>
+			<span class="input-group-addon" style="width:150px">Phonetic</span>
 			<input type="text" class="form-control" name="phonetic" id="phonetic" placeholder="Phonetic">
 		</div>
 
 		<div class="input-group">
-			<span class="input-group-addon">Audio file</span>
+			<span class="input-group-addon" style="width:150px">Audio file</span>
 			<input type="file" name="audio_file" size="2000000" />
 		</div>
 
