@@ -14,7 +14,7 @@
 	<?php echo form_open('group/add/'); ?>
 
 		<div class="input-group">
-			<span class="input-group-addon">Name</span>
+			<span class="input-group-addon" >Name</span>
 			<input type="text" class="form-control" name="name" id="name" placeholder="Name" autofocus>
 		</div>
 

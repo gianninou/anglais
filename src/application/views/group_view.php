@@ -31,7 +31,11 @@
 		<?php foreach($lists as $l){ ?>
 			<tr>
 				<td class="list-group-item"><a href="<?php echo base_url()."index.php/wlist/view/".$l->get_id();?>"><?php echo $l->get_name();?></a></td>
-				<td width="100"><a href="<?php echo base_url()."/index.php/group/delete_list/".$l->get_id()."/".$group->get_id(); ?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a></td>
+				
+				<?php if($group->get_id_admin() == $this->session->userdata('user')['id']){ ?>
+					<td width="100"><a href="<?php echo base_url()."/index.php/group/delete_list/".$l->get_id()."/".$group->get_id(); ?>"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</a></td>
+				<?php } ?>
+
 			</tr>
 		<?php } ?>
 	</table>

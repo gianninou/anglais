@@ -25,10 +25,10 @@
 			<input type="text" class="form-control" name="fr_word" id="fr_word" placeholder="French Word">
 		</div>
 
-		<div class="input-group">
+		<!-- <div class="input-group">
 			<span class="input-group-addon" style="width:150px">Phonetic</span>
 			<input type="text" class="form-control" name="phonetic" id="phonetic" placeholder="Phonetic">
-		</div>
+		</div> -->
 
 		<div class="input-group">
 			<span class="input-group-addon" style="width:150px">Audio file</span>

@@ -38,14 +38,14 @@
 
 		<th>English</th>
 		<th>French</th>
-		<th>Phonetic</th>
+		<!-- <th>Phonetic</th> -->
 		<th>Sound</th>
 
 		<?php foreach ($words as $key => $word) { ?>
 			<tr>
 				<td><?php echo $word->get_english()  ;?></td>
 				<td><?php echo $word->get_french() ; ?></td>
-				<td><?php echo $word->get_phonetic() ; ?></td>
+				<!-- <td><?php echo $word->get_phonetic() ; ?></td> -->
 				<td>
 					<?php if(!empty($word->get_sound())){ ?>
 						<audio controls="controls" preload="auto">

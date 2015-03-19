@@ -245,9 +245,9 @@ class List_model extends CI_model
 			return 0;
 		}
 		foreach ($query->result() as $row) {
-			if($row->nb_right >= $row->nb_false*1.5  &&  $row->nb_all>4 ){
+			if($row->nb_right >= $row->nb_false*1.5  &&  $row->nb_all>=4 ){
 				$ok=$ok+1.0;
-			}elseif($row->nb_right >= $row->nb_false  &&  $row->nb_all>4){
+			}elseif($row->nb_right >= $row->nb_false  &&  $row->nb_all>=2){
 				$ok=$ok+0.5;
 			}
 		}
