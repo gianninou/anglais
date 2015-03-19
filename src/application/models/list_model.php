@@ -238,14 +238,13 @@ class List_model extends CI_model
 			and user_word.id_user = $user_id 
 			");
       	$lists=array();
-		$nbWord=0.0;
+		$nbWord=$this->get_nb_words();
 		$ok=0.0;
 		$ko=0;
 		if($query->num_rows()==0){
 			return 0;
 		}
 		foreach ($query->result() as $row) {
-			$nbWord=$nbWord+1.0;
 			if($row->nb_right >= $row->nb_false*1.5  &&  $row->nb_all>4 ){
 				$ok=$ok+1.0;
 			}elseif($row->nb_right >= $row->nb_false  &&  $row->nb_all>4){
