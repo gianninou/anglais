@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1 id="banniere"><a href="<?php echo base_url().'index.php'; ?>"><img src="<?php echo base_url() . 'assets/img/banniere6.jpg' ; ?>"/></a></h1>
+        <h1 id="banniere"><a href="<?php echo base_url().'index.php'; ?>"><img src="<?php echo base_url() . 'assets/img/banniere4.jpg' ; ?>"/></a></h1>
         
         <nav class="navbar navbar-default" role="navigation">
             
