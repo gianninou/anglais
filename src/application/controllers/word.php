@@ -29,8 +29,8 @@ class Word extends CI_Controller {
 					redirect(base_url().'index.php/wlist/view/'.$liste_id);
 				}
 
-				$this->form_validation->set_rules('en_word', '"English word"', 'trim|required|min_length[1]|max_length[255|encode_php_tags|xss_clean');
-				$this->form_validation->set_rules('fr_word', '"French word"', 'trim|required|min_length[1]|max_length[255|encode_php_tags|xss_clean');
+				$this->form_validation->set_rules('en_word', '"English word"', 'trim|required|min_length[1]|max_length[255|encode_php_tags');
+				$this->form_validation->set_rules('fr_word', '"French word"', 'trim|required|min_length[1]|max_length[255|encode_php_tags');
 
 				if($this->form_validation->run()){
 

@@ -36,7 +36,7 @@ class User_model extends CI_model
 
     public function set_password($password , $hash=true){
     	if($hash){
-   	 		$this->password = sha1($password);
+   	 		$this->password = hashpass($password);
    	 	}else{
    	 		$this->password = $password;
    	 	}
@@ -137,7 +137,7 @@ class User_model extends CI_model
         if($query->num_rows()==1){
             $row = $query->result();
             $row = $row[0];
-            if($row->password == sha1($pass)){
+            if($row->password == hashpass($pass)){
                 $user = User_model::find_by_id($row->id);
                 return $user;
             }else{

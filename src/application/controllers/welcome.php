@@ -49,11 +49,11 @@ class Welcome extends CI_Controller {
 		if(!$this->session->userdata('user')){
 
 
-			$this->form_validation->set_rules('first_name', '"First Name"', 'trim|required|min_length[1]|max_length[255]|encode_php_tags|xss_clean');
-			$this->form_validation->set_rules('last_name', '"Last name"', 'trim|required|min_length[1]|max_length[255]|encode_php_tags|xss_clean');
-			$this->form_validation->set_rules('email', '"Email"', 'trim|required|min_length[5]|max_length[255]|encode_php_tags|xss_clean');
-			$this->form_validation->set_rules('pass', '"Password"', 'trim|required|matches[pass2]|min_length[4]|max_length[255]|encode_php_tags|xss_clean');
-			$this->form_validation->set_rules('pass2', '"Confirme Password"', 'trim|required|min_length[4]|max_length[255]|encode_php_tags|xss_clean');
+			$this->form_validation->set_rules('first_name', '"First Name"', 'trim|required|min_length[1]|max_length[255]|encode_php_tags');
+			$this->form_validation->set_rules('last_name', '"Last name"', 'trim|required|min_length[1]|max_length[255]|encode_php_tags');
+			$this->form_validation->set_rules('email', '"Email"', 'trim|required|min_length[5]|max_length[255]|encode_php_tags');
+			$this->form_validation->set_rules('pass', '"Password"', 'trim|required|matches[pass2]|min_length[4]|max_length[255]|encode_php_tags');
+			$this->form_validation->set_rules('pass2', '"Confirme Password"', 'trim|required|min_length[4]|max_length[255]|encode_php_tags');
 
 
 			if($this->form_validation->run()){

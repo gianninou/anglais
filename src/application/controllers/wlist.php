@@ -30,7 +30,7 @@ class Wlist extends CI_Controller {
 				redirect(base_url().'index.php/welcome');
 			}
 			
-			$this->form_validation->set_rules('name', '"List name"', 'trim|required|min_length[1]|max_length[255|encode_php_tags|xss_clean');
+			$this->form_validation->set_rules('name', '"List name"', 'trim|required|min_length[1]|max_length[255|encode_php_tags');
 			
 			if($this->form_validation->run()){
 

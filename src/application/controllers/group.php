@@ -65,7 +65,7 @@ class Group extends CI_Controller {
 				redirect(base_url().'index.php/myGroups');
 			}
 			
-			$this->form_validation->set_rules('name', '"Group name"', 'trim|required|min_length[1]|max_length[255|encode_php_tags|xss_clean');
+			$this->form_validation->set_rules('name', '"Group name"', 'trim|required|min_length[1]|max_length[255|encode_php_tags');
 			
 			if($this->form_validation->run()){
 
@@ -101,7 +101,7 @@ class Group extends CI_Controller {
 				redirect(base_url().'index.php/myGroups');
 			}
 
-			$this->form_validation->set_rules('group', '"Group Name"', 'trim|required|encode_php_tags|xss_clean');
+			$this->form_validation->set_rules('group', '"Group Name"', 'trim|required|encode_php_tags');
 			
 			if($this->form_validation->run()){
 				//form valide
